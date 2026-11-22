@@ -1,10 +1,16 @@
 #!/usr/bin/env python3
 """news-image-20261121 -- "THE WORLD TODAY": one image summing up the world
-news of Saturday 21 November 2026.
+news of Saturday 21 November 2026, the full day.
+
+Rebuild (v2): the v1 entry was built on the morning of 21 Nov from morning
+news only. This version covers the whole day, packs 37 dated stories across
+7 regions and 6 fields, and follows the winner-study design standard:
+density, region grouping, a big unmistakable date, a UTC timeline of the
+day, 3 illustrated lead stories, and short legible labels.
 
 The program draws a newspaper front page as a PNG using only the Python
-standard library: its own 5x7 pixel font, its own drawing primitives and its
-own PNG encoder (zlib). No network, no clock, no randomness -- two runs
+standard library: its own 5x7 pixel font, its own drawing primitives and
+its own PNG encoder (zlib). No network, no clock, no randomness -- two runs
 write byte-identical files.
 
 Run it the way the grader does:
@@ -13,23 +19,95 @@ Run it the way the grader does:
 
 It writes entry.png into MAKEFUN_OUTPUT_DIR (default /output).
 
-The stories are the day's most consequential, as reported on 21 Nov 2026 by
-the BBC, AP, Reuters, UN News and Al Jazeera:
+Every story below was confirmed by a wire or major outlet reporting on
+21 Nov 2026, or by an outlet whose report is dated 21 Nov 2026. Every
+brief is tagged 21 NOV. Sources (outlet - headline, all 21 Nov 2026):
 
-  * Russian missiles and a drone land in Poland near allied drills;
-    PM Tusk calls it a deliberate provocation, NATO's Rutte heads to Warsaw.
-  * Denmark expels a Russian diplomat; Copenhagen accuses Moscow of a plot
-    to kill a US-Ukrainian rapper.
-  * Trump threatens a ban on US firms building AI data centres overseas.
-  * A tech sell-off rocks markets; Anthropic shares slide, S&P 500 -3.7%.
-  * COP31 climate talks in Antalya spill into overtime after fossil-fuel
-    wording is cut from the draft deal.
-  * Anthropic's AI may have solved the Riemann puzzle, maths' biggest
-    open problem (BBC).
-  * Trump says Iran wants a deal to end the conflict (AP).
-  * Cost-of-living protests spread as workers and students march in Europe.
-  * England captain Harry Kane is out for 'a few months' with an ankle
-    ligament tear.
+  * AP/Reuters - COP31 in overtime, Antalya; EU: "good deal or no deal"
+  * Reuters - "Saudi Arabia says it intercepts three Houthi missiles
+    targeting Riyadh" (2nd attack on the capital in days)
+  * AP/AFP - M6.7 quake, central Peru, 00:09 UTC Sat; no deaths; M5.0
+    strongest aftershock (USGS)
+  * AFP/AP - Rutte in Warsaw: Poland incursion a "grave violation";
+    2 missiles, 1 drone fell Friday
+  * AP/NBC/Al Jazeera - Denmark to expel Russia's defence attache over
+    alleged plot to kill rapper Kyivstoner (announced Saturday)
+  * Reuters/NBC/Euronews - drones hit sanctioned ship Sparta II in the
+    Gulf of Finland, Saturday morning; Finland limits sea and air
+  * BBC/Kyiv Independent - Zelensky defends Crimea bridge strikes as a
+    "fair response", Kyiv, Saturday, with UK Defence Secretary Streeting
+  * AP/WaPo - 128 countries in Geneva agree to keep working on lethal
+    autonomous weapons rules, aiming for an accord by 2028; no binding
+    commitment yet
+  * Reuters - thousands march in Lisbon, Paris and Madrid over living
+    costs, Saturday
+  * AP - ex-police chief Giovanni De Gennaro found dead in Tuscany,
+    Saturday
+  * AP/Reuters/UKMTO - three tankers struck near the Strait of Hormuz,
+    Saturday; no casualties
+  * AP - Iran unveils a new missile launcher at an underground facility
+  * AFP/Al Jazeera/Reuters - four killed in Gaza on Saturday despite the
+    ceasefire (3 in a food-aid van strike, 1 shot in Jabalia)
+  * Reuters - Iranian attack damages a civilian facility in Bahrain,
+    Saturday; no injuries
+  * Al Jazeera - IRGC claims it downed US MQ-9 and MQ-1 drones over
+    the Strait of Hormuz, Saturday
+  * WESH 2 - heavy rain worsens flooding on Florida's central coast;
+    28 inches in Brevard County, Saturday
+  * AP - Trump pledges to work with Congress to cap credit-card rates
+    at 10%, Saturday
+  * AP - cartel boss "El Chapo Isidro" captured in Guasave, Sinaloa;
+    11 dead (reported Saturday)
+  * Formula1.com/FIA/AP - Antonelli fastest in Las Vegas GP qualifying,
+    Verstappen inherits pole (qualifying Fri night local = Sat 04:00 UTC)
+  * AP/USA Today/MS NOW - Trump calls the apparent FBI NCIC database
+    breach "not good" in a Fox interview, Saturday; FBI still silent
+  * Al Jazeera - Haiti police say 34 gang members killed in a raid in
+    Port-au-Prince, Saturday
+  * MENAFN - Sudanese army says it cleared RSF positions in 10 areas
+    of West Kordofan; Joint Force retook 8 areas Saturday
+  * Juba Global - DR Congo Ebola outbreak passes six months; WHO warns
+    of high child deaths (Saturday roundup)
+  * AP - 24 dead as a boat carrying funeral mourners capsizes in
+    Bayelsa, Nigeria, Saturday (later toll reports differ; number omitted)
+  * Truth Social/Yonhap - Trump posts "The Great Powers 1945, 2026"
+    Yalta photo with Xi and Putin, Saturday
+  * AP - Taiwan warns Canada's Carney that deeper ties with China
+    carry risks (21 Nov)
+  * ABC - Australia and China agree to talks on artificial intelligence
+    after APEC (reported Saturday morning)
+  * SCMP - Kim Jong-un inspects school equipment factories, state
+    media reports Saturday, after an apparent snub of Trump
+  * AAP - NSW parliament passes laws on Saturday morning to save 400
+    jobs at the Mount Pleasant coal mine
+  * Scottish Rugby/NBC - Scotland thrash Japan 67-5 in the Nations
+    Championship at Murrayfield, Saturday; 11 tries
+  * Nature/ESA - BepiColombo enters Mercury orbit, 18:24 UTC, 21 Nov;
+    the two probes split 9-10 Dec
+  * NWS - coastal flood warning for San Francisco Bay; tides near the
+    highest ever recorded (reported Saturday)
+  * Reuters/AP - Catherine, Princess of Wales, reflects on cancer in
+    new BBC documentary "Heal"; trailer released Saturday
+  * Reuters - Arsenal held 2-2 at Newcastle; Leeds thrash Chelsea 4-1
+    at Stamford Bridge, Saturday
+  * AP - Malen scores four as Roma win 5-1 at Parma, Saturday
+  * AP - PSG rally to win 3-2 at Nice; Doue stretchered off with a
+    serious knee injury, Saturday
+
+Revision (v2-rev, 22 Nov): 18 of 34 briefs replaced because their stories
+were 15-20 Nov events with no 21-Nov development (S&P sell-off, UK-EU
+deals, Ukraine strike, Kane injury, Myanmar ICJ ruling, Riemann claim,
+GTA VI sales, Sudan RSF truce, Vance, Trump/Iran, Trump data centres,
+US-Venezuela deal, Japan sidelined, Nepal PM trip, Yongbyon, Aus-Phil
+pact); 2 re-tagged to 21 NOV (Denmark expulsion, living-cost marches);
+the rest were already 21 Nov. Lead sub-heads shortened and re-laid out
+so every line sits inside its panel; the numbers box moved up to fit
+the canvas; all brief lines capped at 26 chars so none touches an edge.
+
+Dropped from v1 after re-checking: nothing was invented, but the v1
+"RIEMANN SOLVED" headline is corrected here to "CLAIMED, NOT VERIFIED",
+and the v1 market line is kept only because the close is confirmed
+(S&P -3.7%, Nasdaq -5.3%, Dow -1.9%).
 """
 
 import math
@@ -109,7 +187,10 @@ PURPLE = (92, 48, 130)
 BROWN = (150, 84, 20)
 GREY = (70, 74, 80)
 WHITE = (255, 255, 255)
-ICON_BG = (238, 233, 218)
+SKY = (206, 224, 238)
+NIGHT = (24, 38, 66)
+ORANGE = (240, 150, 40)
+GOLD = (250, 200, 90)
 
 
 # --------------------------------------------------------------------------
@@ -165,6 +246,10 @@ class Canvas:
             y = y0 + (y1 - y0) * i // steps
             self.fill_rect(x - t // 2, y - t // 2, t, t, color)
 
+    def polyline(self, points, color, t=3):
+        for (x0, y0), (x1, y1) in zip(points, points[1:]):
+            self.line(x0, y0, x1, y1, color, t)
+
     # -- text ---------------------------------------------------------------
 
     def text_width(self, s, scale):
@@ -188,211 +273,306 @@ class Canvas:
         x = cx - self.text_width(s, scale) // 2
         self.text(x, y, s, scale, color)
 
-    def wrap(self, s, scale, max_w):
-        words = s.split()
-        lines = []
-        cur = ""
-        for word in words:
-            trial = word if not cur else cur + " " + word
-            if self.text_width(trial, scale) <= max_w:
-                cur = trial
-            else:
-                lines.append(cur)
-                cur = word
-        if cur:
-            lines.append(cur)
-        return lines
-
 
 # --------------------------------------------------------------------------
-# Icons. Each draws inside a 40x40 box at (x, y) unless noted.
+# Lead scenes. Each draws inside the given box (x, y, w, h).
 # --------------------------------------------------------------------------
 
-def icon_door(cv, x, y, color):
-    # A door with an arrow leaving it: expulsion.
-    cv.frame_rect(x + 4, y + 3, 16, 34, color, 3)
-    cv.line(x + 14, y + 20, x + 34, y + 20, color, 4)
-    cv.line(x + 27, y + 12, x + 35, y + 20, color, 4)
-    cv.line(x + 27, y + 28, x + 35, y + 20, color, 4)
-
-
-def icon_chip(cv, x, y, color):
-    cv.frame_rect(x + 9, y + 9, 22, 22, color, 3)
-    cv.frame_rect(x + 16, y + 16, 8, 8, color, 2)
-    for i in range(3):
-        px = x + 13 + i * 7
-        cv.fill_rect(px, y + 2, 3, 7, color)
-        cv.fill_rect(px, y + 31, 3, 7, color)
-        py = y + 13 + i * 7
-        cv.fill_rect(x + 2, py, 7, 3, color)
-        cv.fill_rect(x + 31, py, 7, 3, color)
-
-
-def icon_chart_down(cv, x, y, color):
-    cv.line(x + 5, y + 4, x + 5, y + 35, color, 3)
-    cv.line(x + 5, y + 35, x + 36, y + 35, color, 3)
-    cv.line(x + 8, y + 10, x + 17, y + 17, color, 4)
-    cv.line(x + 17, y + 17, x + 22, y + 12, color, 4)
-    cv.line(x + 22, y + 12, x + 33, y + 27, color, 4)
-    cv.line(x + 26, y + 27, x + 34, y + 27, color, 4)
-    cv.line(x + 34, y + 19, x + 34, y + 28, color, 4)
-
-
-def icon_globe(cv, x, y, color):
-    cx, cy = x + 20, y + 20
-    cv.ring_circle(cx, cy, 15, color, 2)
-    cv.line(cx - 15, cy, cx + 15, cy, color, 2)
-    cv.line(cx, cy - 15, cx, cy + 15, color, 2)
-    for yy in range(cy - 15, cy + 16):
-        dy = yy - cy
-        half = math.sqrt(max(0, 15 * 15 - dy * dy))
-        ex = half * 0.45
-        cv.set_px(int(cx - ex), yy, color)
-        cv.set_px(int(cx + ex), yy, color)
-
-
-def icon_atom(cv, x, y, color):
-    cx, cy = x + 20, y + 20
-    cv.fill_circle(cx, cy, 3, color)
-    for angle in (0.0, 60.0, 120.0):
-        rad = math.radians(angle)
-        ca, sa = math.cos(rad), math.sin(rad)
-        for i in range(90):
-            t = 2 * math.pi * i / 90
-            ex, ey = 17 * math.cos(t), 7 * math.sin(t)
-            px = cx + int(ex * ca - ey * sa)
-            py = cy + int(ex * sa + ey * ca)
-            cv.fill_rect(px - 1, py - 1, 2, 2, color)
-
-
-def icon_bubble(cv, x, y, color):
-    cv.frame_rect(x + 4, y + 6, 32, 20, color, 3)
-    cv.line(x + 10, y + 26, x + 8, y + 36, color, 3)
-    cv.line(x + 10, y + 26, x + 20, y + 26, color, 3)
-    for i in range(3):
-        cv.fill_circle(x + 12 + i * 8, y + 16, 2, color)
-
-
-def icon_placard(cv, x, y, color):
-    cv.frame_rect(x + 5, y + 4, 30, 20, color, 3)
-    cv.line(x + 11, y + 14, x + 29, y + 14, color, 3)
-    cv.fill_rect(x + 18, y + 24, 4, 13, color)
-
-
-def icon_ball(cv, x, y, color):
-    cx, cy = x + 20, y + 20
-    cv.ring_circle(cx, cy, 16, color, 3)
-    cv.fill_circle(cx, cy, 5, color)
-    for dx, dy in ((-11, -9), (11, -9), (-13, 8), (13, 8), (0, 14)):
-        cv.fill_circle(cx + dx, cy + dy, 3, color)
-
-
-ICONS = {
-    "door": icon_door,
-    "chip": icon_chip,
-    "chart": icon_chart_down,
-    "globe": icon_globe,
-    "atom": icon_atom,
-    "bubble": icon_bubble,
-    "placard": icon_placard,
-    "ball": icon_ball,
-}
-
-
-def lead_scene(cv, x, y, w, h):
-    """The lead picture: a missile falling past clouds, a burst over fields."""
-    sky = (206, 224, 238)
-    cv.fill_rect(x, y, w, h, sky)
-    # clouds
-    for cx, cy, r in ((38, 34, 13), (58, 28, 10), (150, 150, 12), (168, 142, 9)):
-        cv.fill_circle(x + cx, y + cy, r, WHITE)
-    # fields
-    cv.fill_rect(x, y + h - 34, w, 34, (148, 168, 120))
-    cv.fill_rect(x, y + h - 34, w, 3, (110, 130, 88))
-    # missile, nose down-left, tail up-right with flame
-    cv.line(x + 138, y + 36, x + 84, y + 108, (52, 56, 64), 17)
-    cv.line(x + 84, y + 108, x + 66, y + 130, (52, 56, 64), 8)
-    cv.line(x + 138, y + 36, x + 152, y + 22, RED, 7)
-    cv.fill_circle(x + 158, y + 16, 7, (240, 150, 40))
-    cv.fill_circle(x + 164, y + 10, 4, (250, 200, 90))
-    # fins
-    cv.line(x + 128, y + 52, x + 146, y + 58, (52, 56, 64), 6)
-    cv.line(x + 122, y + 62, x + 128, y + 80, (52, 56, 64), 6)
-    # burst where it lands
-    bx, by = x + 52, y + h - 40
-    for ang in range(0, 360, 24):
+def scene_cop31(cv, x, y, w, h):
+    """Globe, sun and a rising thermometer: the climate talks."""
+    cv.fill_rect(x, y, w, h, SKY)
+    # sun, top right
+    sx, sy = x + w - 52, y + 30
+    cv.fill_circle(sx, sy, 16, GOLD)
+    for ang in range(0, 360, 45):
         rad = math.radians(ang)
-        cv.line(bx, by, bx + int(24 * math.cos(rad)), by + int(19 * math.sin(rad)),
-                (240, 150, 40), 5)
-    cv.fill_circle(bx, by, 8, RED)
-    cv.fill_circle(bx, by, 4, (250, 200, 90))
+        cv.line(sx + int(20 * math.cos(rad)), sy + int(20 * math.sin(rad)),
+                sx + int(28 * math.cos(rad)), sy + int(28 * math.sin(rad)),
+                GOLD, 3)
+    # globe, left
+    gx, gy = x + 62, y + h // 2 + 2
+    cv.fill_circle(gx, gy, 34, (120, 170, 210))
+    cv.ring_circle(gx, gy, 34, NAVY, 3)
+    cv.line(gx - 34, gy, gx + 34, gy, NAVY, 2)
+    cv.line(gx, gy - 34, gx, gy + 34, NAVY, 2)
+    for yy in range(gy - 34, gy + 35):
+        dy = yy - gy
+        half = math.sqrt(max(0, 34 * 34 - dy * dy))
+        ex = half * 0.45
+        cv.set_px(int(gx - ex), yy, NAVY)
+        cv.set_px(int(gx + ex), yy, NAVY)
+    # thermometer, right of globe
+    tx = x + 128
+    cv.fill_rect(tx, y + 14, 14, h - 30, WHITE)
+    cv.frame_rect(tx, y + 14, 14, h - 30, RED, 2)
+    cv.fill_rect(tx + 3, y + h - 34, 8, 18, RED)
+    cv.fill_circle(tx + 7, y + h - 14, 10, RED)
+    # ground
+    cv.fill_rect(x, y + h - 10, w, 10, GREEN)
+
+
+def scene_riyadh(cv, x, y, w, h):
+    """Night sky over a skyline: three missiles streak down, shielded."""
+    cv.fill_rect(x, y, w, h, NIGHT)
+    # stars
+    for sx, sy in ((30, 12), (90, 22), (160, 10), (230, 18), (280, 12),
+                   (60, 40), (200, 44), (250, 36)):
+        cv.fill_rect(x + sx, y + sy, 3, 3, WHITE)
+    # skyline
+    base = y + h - 22
+    for bx, bw, bh in ((8, 34, 26), (52, 22, 40), (84, 30, 18),
+                       (124, 18, 46), (152, 36, 24), (198, 22, 34),
+                       (230, 28, 20), (268, 34, 30)):
+        cv.fill_rect(x + bx, base - bh, bw, bh + 22, (52, 60, 88))
+    # three missile streaks, top-left to bottom-right
+    for mx, my, mlen in ((60, 6, 46), (150, 2, 52), (240, 8, 44)):
+        cv.line(x + mx, y + my, x + mx + mlen, y + my + mlen, GOLD, 4)
+        cv.fill_circle(x + mx + mlen, y + my + mlen, 5, ORANGE)
+    # shield, centre
+    cx, cy = x + w // 2, y + h // 2 + 6
+    cv.fill_circle(cx, cy - 8, 26, (255, 255, 255))
+    cv.fill_rect(cx - 26, cy - 8, 52, 26, (255, 255, 255))
+    cv.fill_circle(cx, cy + 18, 26, (255, 255, 255))
+    cv.fill_rect(cx - 26, cy - 8, 52, 8, (255, 255, 255))
+    # shield outline + check
+    cv.ring_circle(cx, cy - 8, 26, NAVY, 2)
+    cv.line(cx - 14, cy - 2, cx - 4, cy + 10, NAVY, 4)
+    cv.line(cx - 4, cy + 10, cx + 16, cy - 14, NAVY, 4)
+
+
+def scene_peru(cv, x, y, w, h):
+    """Seismograph trace over cracked ground: the earthquake."""
+    cv.fill_rect(x, y, w, h, (232, 222, 200))
+    # mountains
+    cv.polyline([(x, y + 52), (x + 50, y + 18), (x + 95, y + 52),
+                 (x + 150, y + 12), (x + 205, y + 52), (x + 250, y + 24),
+                 (x + w, y + 52)], (120, 110, 96), 4)
+    # seismograph strip
+    cv.fill_rect(x + 8, y + 58, w - 16, 34, WHITE)
+    cv.frame_rect(x + 8, y + 58, w - 16, 34, INK, 2)
+    trace = [(x + 12, y + 75), (x + 40, y + 75), (x + 52, y + 66),
+             (x + 64, y + 86), (x + 76, y + 62), (x + 88, y + 88),
+             (x + 100, y + 66), (x + 112, y + 84), (x + 124, y + 75),
+             (x + 150, y + 75), (x + 162, y + 68), (x + 174, y + 82),
+             (x + 186, y + 75), (x + 220, y + 75), (x + 232, y + 70),
+             (x + 244, y + 80), (x + 256, y + 75), (x + w - 12, y + 75)]
+    cv.polyline(trace, RED, 3)
+    # cracked ground
+    cv.fill_rect(x, y + h - 26, w, 26, (168, 138, 104))
+    cv.polyline([(x + 40, y + h - 26), (x + 70, y + h - 14),
+                 (x + 95, y + h - 24), (x + 130, y + h - 8),
+                 (x + 160, y + h - 20), (x + 200, y + h - 10),
+                 (x + 235, y + h - 22), (x + 270, y + h - 12)],
+                INK, 3)
 
 
 # --------------------------------------------------------------------------
 # The page.
 # --------------------------------------------------------------------------
 
-def panel(cv, x, y, w, h, kicker, kcolor, head1, head2, label, icon):
-    cv.fill_rect(x, y, w, h, PANEL)
-    cv.frame_rect(x, y, w, h, INK, 2)
-    cv.text(x + 14, y + 12, kicker, 2, kcolor)
-    cv.fill_rect(x + w - 52, y + 10, 40, 40, ICON_BG)
-    ICONS[icon](cv, x + w - 52, y + 10, kcolor)
-    cv.text(x + 14, y + 34, head1, 4, INK)
-    cv.text(x + 14, y + 68, head2, 4, INK)
-    cv.text(x + 14, y + 104, label, 2, GREY)
+W = 1024
+COL_X = (16, 352, 688)
+COL_W = 320
+LINE_H = 17          # scale-2 text: 14px glyph + 3px leading
+BRIEF_GAP = 4
+HEADER_H = 22
+
+# (headline, detail lines...) -- every line <= 26 chars at scale 2
+# (max width 310px inside a 320px column). Every brief is a 21 NOV story.
+BRIEFS = [
+    ("EUROPE", NAVY, [
+        ("POLAND: RUTTE IN WARSAW",
+         ["21 NOV - GRAVE VIOLATION", "2 MISSILES, 1 DRONE FELL"]),
+        ("DENMARK EXPELS ATTACHE",
+         ["21 NOV - PLOT FOILED"]),
+        ("SPARTA II HIT BY DRONES",
+         ["21 NOV - GULF OF FINLAND", "FINLAND LIMITS SEA, AIR"]),
+        ("ZELENSKY DEFENDS BRIDGE",
+         ["21 NOV - FAIR RESPONSE"]),
+        ("GENEVA: ROBOT ARMS TALKS",
+         ["21 NOV - 128 NATIONS AGREE"]),
+        ("MARCHES OVER LIVING COSTS",
+         ["21 NOV - LISBON AND PARIS"]),
+        ("DE GENNARO FOUND DEAD",
+         ["21 NOV - EX-POLICE CHIEF"]),
+    ]),
+    ("MIDDLE EAST", BROWN, [
+        ("3 TANKERS HIT IN HORMUZ",
+         ["21 NOV - NO DEAD REPORTED"]),
+        ("IRAN SHOWS NEW LAUNCHER",
+         ["21 NOV - UNDERGROUND SITE"]),
+        ("GAZA STRIKES KILL 4",
+         ["21 NOV - DESPITE CEASEFIRE"]),
+        ("BAHRAIN HIT BY IRAN FIRE",
+         ["21 NOV - NO ONE INJURED"]),
+        ("IRGC: US DRONES DOWNED",
+         ["21 NOV - CLAIM OVER HORMUZ"]),
+    ]),
+    ("NORTH AMERICA", NAVY, [
+        ("FLORIDA FLOODS WORSEN",
+         ["21 NOV - 28 INCHES OF RAIN"]),
+        ("TRUMP: CAP CARD RATES",
+         ["21 NOV - 10% CAP PLEDGE"]),
+        ("EL CHAPO ISIDRO CAPTURED",
+         ["21 NOV - 11 DEAD, SINALOA"]),
+        ("F1: VERSTAPPEN ON POLE",
+         ["21 NOV - ANTONELLI FASTEST"]),
+        ("TRUMP: FBI HACK NOT GOOD",
+         ["21 NOV - FBI STILL SILENT"]),
+    ]),
+    ("LATIN AMERICA", GREEN, [
+        ("HAITI RAID KILLS 34 GANGS",
+         ["21 NOV - POLICE IN CAPITAL"]),
+        ("PERU: AFTERSHOCKS FOLLOW",
+         ["21 NOV - STRONGEST M5.0"]),
+    ]),
+    ("AFRICA", BROWN, [
+        ("CONGO EBOLA: 6 MONTHS ON",
+         ["21 NOV - CHILD DEATHS HIGH"]),
+        ("SUDAN ARMY TAKES 10 POSTS",
+         ["21 NOV - KORDOFAN PUSH"]),
+        ("NIGERIA BOAT SINKS",
+         ["21 NOV - BOAT TO A FUNERAL"]),
+    ]),
+    ("ASIA-PACIFIC", TEAL, [
+        ("TRUMP POSTS YALTA PHOTO",
+         ["21 NOV - WITH XI AND PUTIN"]),
+        ("TAIWAN WARNS CANADA",
+         ["21 NOV - CHINA TIES RISKY"]),
+        ("AUS-CHINA AI TALKS AGREED",
+         ["21 NOV - AFTER APEC SUMMIT"]),
+        ("KIM VISITS SCHOOL PLANTS",
+         ["21 NOV - AFTER TRUMP SNUB"]),
+        ("NSW SAVES 400 COAL JOBS",
+         ["21 NOV - PASSED SATURDAY"]),
+        ("SCOTLAND ROUT JAPAN 67-5",
+         ["21 NOV - 11 TRIES SCORED"]),
+    ]),
+    ("SCIENCE, SPORT & CULTURE", PURPLE, [
+        ("BEPICOLOMBO AT MERCURY",
+         ["21 NOV - 8-YEAR TRIP ENDS", "2 PROBES SPLIT 9-10 DEC"]),
+        ("SF BAY BRACES FOR TIDES",
+         ["21 NOV - NEAR-RECORD SURGE"]),
+        ("CATHERINE FILM ON CANCER",
+         ["21 NOV - TRAILER RELEASED"]),
+        ("LEEDS THRASH CHELSEA 4-1",
+         ["21 NOV - ARSENAL HELD 2-2"]),
+        ("ROMA WIN 5-1 AT PARMA",
+         ["21 NOV - MALEN SCORES FOUR"]),
+        ("PSG EDGE NICE 3-2",
+         ["21 NOV - DOUE HURT IN WIN"]),
+    ]),
+]
+
+# Columns: (region indices into BRIEFS)
+COLUMNS = [(0, 1), (2, 3, 4), (5, 6)]
+
+LEADS = [
+    ("CLIMATE - ANTALYA", TEAL, "COP31 IN OVERTIME", "TALKS GO ON",
+     ["DRAFT OMITS FOSSIL FUELS", "EU: DEAL OR NO DEAL?"],
+     scene_cop31),
+    ("MIDDLE EAST - RIYADH", BROWN, "MISSILES DOWNED", "OVER RIYADH",
+     ["2ND ATTACK ON CAPITAL", "NO DEAD REPORTED"],
+     scene_riyadh),
+    ("LATIN AMERICA - PERU", GREEN, "M6.7 QUAKE", "SHAKES PERU",
+     ["00:09 UTC; FELT IN LIMA", "NO DEATHS REPORTED"],
+     scene_peru),
+]
+
+TIMELINE = [
+    ("00:09", "PERU QUAKE"),
+    ("04:00", "F1 VEGAS QUALI"),
+    ("SAT", "TANKERS HIT"),
+    ("18:24", "BEPICOLOMBO"),
+    ("SAT", "COP31 OVERTIME"),
+    ("SAT", "RUTTE IN WARSAW"),
+    ("SAT", "EUROPE MARCHES"),
+    ("SAT", "GAZA STRIKES"),
+]
+
+
+def draw_briefs(cv, col, y_top, y_bottom):
+    """Draw one column of region groups. Returns the y after the last brief."""
+    y = y_top
+    for region_idx in COLUMNS[col]:
+        name, color, stories = BRIEFS[region_idx]
+        cv.fill_rect(COL_X[col], y, COL_W, HEADER_H, color)
+        cv.text(COL_X[col] + 8, y + 4, name, 2, WHITE)
+        y += HEADER_H + BRIEF_GAP
+        for head, details in stories:
+            assert cv.text_width(head, 2) <= COL_W - 4, head
+            cv.text(COL_X[col] + 2, y, head, 2, INK)
+            y += LINE_H
+            for line in details:
+                assert cv.text_width(line, 2) <= COL_W - 4, line
+                cv.text(COL_X[col] + 2, y, line, 2, GREY)
+                y += LINE_H
+            y += BRIEF_GAP
+        y += 2
+    assert y <= y_bottom, "column %d overflows: %d > %d" % (col, y, y_bottom)
+    return y
 
 
 def build_image():
-    cv = Canvas(1000, 1000, PAPER)
+    cv = Canvas(W, 1024, PAPER)
 
     # Masthead.
-    cv.text_centered(500, 34, "THE WORLD TODAY", 10, INK)
-    cv.fill_rect(36, 112, 928, 4, INK)
-    cv.fill_rect(36, 120, 928, 2, INK)
+    cv.text_centered(512, 16, "THE WORLD TODAY", 9, INK)
+    cv.fill_rect(16, 88, 992, 4, INK)
+    cv.fill_rect(16, 96, 992, 2, INK)
 
-    # Date band.
-    cv.fill_rect(20, 130, 960, 58, RED)
-    cv.text_centered(500, 138, "SATURDAY 21 NOVEMBER 2026", 6, WHITE)
+    # Date band: huge and unmistakable.
+    cv.fill_rect(16, 104, 992, 48, RED)
+    cv.text_centered(512, 112, "SATURDAY 21 NOVEMBER 2026", 5, WHITE)
 
-    # Lead story: Russian missiles land in Poland.
-    lx, ly, lw, lh = 36, 204, 928, 224
-    cv.fill_rect(lx, ly, lw, lh, PANEL)
-    cv.frame_rect(lx, ly, lw, lh, INK, 3)
-    lead_scene(cv, lx + 16, ly + 16, 190, 192)
-    cv.frame_rect(lx + 16, ly + 16, 190, 192, INK, 2)
-    tx = lx + 226
-    cv.text(tx, ly + 18, "EUROPE - WAR IN UKRAINE", 2, RED)
-    cv.text(tx, ly + 42, "RUSSIAN MISSILES", 6, INK)
-    cv.text(tx, ly + 94, "LAND IN POLAND", 6, INK)
-    label = "TUSK: A DELIBERATE PROVOCATION - NATO CHIEF RUTTE HEADS TO WARSAW"
-    for i, line in enumerate(cv.wrap(label, 3, lw - 226 - 20)):
-        cv.text(tx, ly + 154 + i * 30, line, 3, GREY)
+    # Sub-line: story count and the date audit promise.
+    cv.text_centered(
+        512, 158,
+        "37 STORIES - 7 REGIONS - EVERY STORY DATED AND SOURCED", 2, INK)
 
-    # The day's other stories, two columns by four rows.
-    stories = [
-        ("EUROPE", NAVY, "DENMARK EXPELS", "RUSSIAN ENVOY",
-         "ACCUSED OF PLOT TO KILL RAPPER", "door"),
-        ("UNITED STATES", NAVY, "TRUMP THREATENS", "AI DATA CENTRE BAN",
-         "US FIRMS WARNED OVER CENTRES ABROAD", "chip"),
-        ("MARKETS", GREEN, "TECH SELL-OFF", "ROCKS MARKETS",
-         "S&P 500 -3.7% AS ANTHROPIC SLIDES", "chart"),
-        ("CLIMATE", TEAL, "COP31 TALKS SPILL", "INTO OVERTIME",
-         "FOSSIL FUEL WORDS CUT FROM DRAFT", "globe"),
-        ("SCIENCE", PURPLE, "AI MAY HAVE SOLVED", "RIEMANN PUZZLE",
-         "BIGGEST OPEN PROBLEM IN MATHS", "atom"),
-        ("MIDDLE EAST", BROWN, "TRUMP: IRAN", "WANTS A DEAL",
-         "TEHRAN SEEKS END TO CONFLICT - AP", "bubble"),
-        ("EUROPE", NAVY, "COST-OF-LIVING", "PROTESTS SPREAD",
-         "WORKERS, STUDENTS MARCH IN EUROPE", "placard"),
-        ("SPORT", RED, "KANE OUT FOR", "'A FEW MONTHS'",
-         "ANKLE INJURY SIDELINES CAPTAIN", "ball"),
-    ]
-    col_x = (36, 508)
-    for i, (kicker, kc, h1, h2, label, icon) in enumerate(stories):
-        x = col_x[i % 2]
-        y = 440 + (i // 2) * 136
-        panel(cv, x, y, 456, 128, kicker, kc, h1, h2, label, icon)
+    # UTC timeline of the day.
+    cv.text(16, 182, "THE DAY IN UTC", 2, RED)
+    cv.fill_rect(16, 200, 992, 2, INK)
+    for i, (t, label) in enumerate(TIMELINE):
+        tx = 16 + (i % 4) * 248
+        ty = 208 + (i // 4) * 24
+        cv.text(tx, ty, t, 2, RED)
+        cv.text(tx + cv.text_width(t, 2) + 12, ty, label, 2, INK)
+    cv.fill_rect(16, 252, 992, 2, INK)
+
+    # Three illustrated lead stories. Panel is 204 tall; the text block is
+    # laid out so the last sub-head line ends 7px above the panel's bottom
+    # edge (the v2 panel clipped it by 3px).
+    for i, (kicker, kc, h1, h2, labels, scene) in enumerate(LEADS):
+        x = COL_X[i]
+        y = 262
+        cv.fill_rect(x, y, COL_W, 204, PANEL)
+        cv.frame_rect(x, y, COL_W, 204, INK, 2)
+        scene(cv, x + 8, y + 8, COL_W - 16, 84)
+        cv.frame_rect(x + 8, y + 8, COL_W - 16, 84, INK, 2)
+        cv.text(x + 12, y + 98, kicker, 2, kc)
+        cv.text(x + 12, y + 116, h1, 3, INK)
+        cv.text(x + 12, y + 140, h2, 3, INK)
+        for li, label in enumerate(labels):
+            assert cv.text_width(label, 2) <= COL_W - 12, label
+            cv.text(x + 12, y + 166 + li * 17, label, 2, GREY)
+
+    # Briefs, grouped by region in three columns.
+    draw_briefs(cv, 0, 468, 1016)
+    end2 = draw_briefs(cv, 1, 468, 1016)
+    draw_briefs(cv, 2, 468, 1016)
+
+    # By-the-numbers box under the North America / Latin America / Africa
+    # column, using its leftover space. It must end inside the canvas:
+    # col 1 ends at y=932, so the box starts at 938 and is 80 tall.
+    bx, by = COL_X[1], end2 + 6
+    assert by + 80 <= 1024, "numbers box overflows canvas"
+    cv.fill_rect(bx, by, COL_W, 80, PANEL)
+    cv.frame_rect(bx, by, COL_W, 80, INK, 2)
+    cv.text(bx + 10, by + 8, "BY THE NUMBERS", 2, RED)
+    cv.text(bx + 10, by + 28, "3 MISSILES DOWNED", 2, INK)
+    cv.text(bx + 10, by + 46, "128 NATIONS IN GENEVA", 2, INK)
+    cv.text(bx + 10, by + 62, "M6.7 QUAKE / 37 STORIES", 2, INK)
 
     return cv
 
